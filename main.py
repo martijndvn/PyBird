@@ -1,22 +1,14 @@
-'Easy interfacing with the moneybird'
+from models import base, administrations
 
-class MoneybirdClient():
+with open('secrets') as f:
+    key = f.read()
 
-    def __init__(self, key):
-        self.key = key
+print("Creating Client")
+client = base.MoneybirdClient(key)
 
-    def get_administrations(self) -> list[str]:
-        pass
+print("Reading Administartions")
+admins = administrations.Administrations(client)
 
-    def get_invoices(self):
-        pass
+admins.get()
 
-    def get_customers(self):
-        pass
-
-    def get_timeentries(self):
-        pass
-
-
-
-
+print("Succes")
